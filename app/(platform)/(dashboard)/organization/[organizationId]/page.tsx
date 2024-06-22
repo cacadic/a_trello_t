@@ -6,7 +6,7 @@ const OrganizationIdPage = () => {
   const { userId, orgId } = auth();
   return (
     <div>
-      <OrganizationSwitcher hidePersonal />
+      OrganizationIdPage
     </div>
   );
 };

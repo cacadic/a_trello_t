@@ -24,7 +24,10 @@ export default clerkMiddleware((auth, request) => {
 
     const orgSelection = new URL(path, request.url);
 
-    if (request.nextUrl.pathname !== path) {
+    if (
+      request.nextUrl.pathname !== path &&
+      !request.nextUrl.pathname.split("organization/")[1]
+    ) {
       return NextResponse.redirect(orgSelection);
     }
   }
