@@ -1,0 +1,21 @@
+"use client";
+
+import { List } from "@prisma/client";
+import React from "react";
+import ListForm from "./list-form";
+
+interface ListContainerProps {
+  data: List[];
+  boardId: string;
+}
+
+const ListContainer = ({ data, boardId }: ListContainerProps) => {
+  return (
+    <ol>
+      <ListForm />
+      <div className="flex shrink-0 w-1"></div>
+    </ol>
+  );
+};
+
+export default ListContainer;
