@@ -33,7 +33,7 @@ const FormPopover = ({
   const closeRef = useRef<ElementRef<"button">>(null);
   const router = useRouter();
 
-  const { execute, fieldErros } = useAction(createBoard, {
+  const { execute, fieldErrors } = useAction(createBoard, {
     onSuccess: (data) => {
       toast.success("Board created successfully");
       closeRef.current?.click();
@@ -73,12 +73,12 @@ const FormPopover = ({
         </PopoverClose>
         <form className="space-y-4" action={onSubmit}>
           <div className="space-y-4">
-            <FormPicker id="image" errors={fieldErros} />
+            <FormPicker id="image" errors={fieldErrors} />
             <FormInput
               id="title"
               label="Board title"
               type="text"
-              errors={fieldErros}
+              errors={fieldErrors}
             />
           </div>
           <FormSubmit className="w-full">Create</FormSubmit>

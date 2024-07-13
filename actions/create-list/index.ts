@@ -34,21 +34,35 @@ const handler = async (data: InputType): Promise<ReturnType> => {
       };
     }
 
+    const lastList = await db.list.findFirst({
+      where: {
+        boardId,
+      },
+      orderBy: {
+        order: "desc"
+      },
+      select: {
+        order: true
+      }
+    })
+
+    const newOrder = lastList ? lastList.order + 1 : 1
+
     list = await db.list.create({
       data: {
         title,
         boardId,
-        order: 1,
+        order: newOrder,
       },
     });
   } catch (error) {
     return {
-      error: "Failed to update board",
+      error: "Failed to create board",
     };
   }
 
-  revalidatePath(`/board/${id}`);
-  return { data: board };
+  revalidatePath(`/board/${boardId}`);
+  return { data: list };
 };
 
-export const creatList = createSafeAction(CreateList, handler);
+export const createList = createSafeAction(CreateList, handler);
