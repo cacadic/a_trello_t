@@ -19,7 +19,7 @@ const BoardList = async () => {
       orgId,
     },
     orderBy: {
-      createAt: "desc",
+      createdAt: "desc",
     },
   });
 
