@@ -27,7 +27,8 @@ export default clerkMiddleware((auth, request) => {
     if (
       request.nextUrl.pathname !== path &&
       !request.nextUrl.pathname.split("organization/")[1] &&
-      !request.nextUrl.pathname.split("board/")[1]
+      !request.nextUrl.pathname.split("board/")[1] &&
+      !request.nextUrl.pathname.split("api/")[1]
     ) {
       return NextResponse.redirect(orgSelection);
     }
